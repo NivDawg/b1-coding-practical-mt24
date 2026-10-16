@@ -76,7 +76,16 @@ class Mission:
     @classmethod
     def from_csv(cls, file_name: str):
         # You are required to implement this method
-        pass
+        depth_data = (file_name)
+
+        # Stores the values in the righ array
+        reference = depth_data[:, 0]
+        cave_height = depth_data[:, 1]
+        cave_depth = depth_data[;, 2]
+
+        # Return a new Mission instance initialized with these arrays
+        return cls(reference, cave_height, cave_depth)
+    y
 
 
 class ClosedLoop:
@@ -98,6 +107,7 @@ class ClosedLoop:
             positions[t] = self.plant.get_position()
             observation_t = self.plant.get_depth()
             # Call your controller here
+            actions[t] = self.controller(observation_t, mission.reference[t])
             self.plant.transition(actions[t], disturbances[t])
 
         return Trajectory(positions)
