@@ -76,7 +76,7 @@ class Mission:
     @classmethod
     def from_csv(cls, file_name: str):
         # You are required to implement this method
-        depth_data = (file_name)
+        depth_data = pd.read_csv(file_name)
 
         # Stores the values in the righ array
         reference = depth_data[:, 0]
